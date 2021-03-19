@@ -1,0 +1,93 @@
+import math
+
+def area_cone(geratriz, raio):
+    alat = geratriz * raio
+    abase = raio ** 2
+    atot = alat + abase
+    return atot
+
+def re1(cat1, cat2):
+    x = cat1 ** 2 + cat2 ** 2
+    x = math.sqrt(x)
+    return x
+
+def re2(cat, hip):
+    x = hip ** 2 - cat ** 2
+    x = math.sqrt(x)
+    return x
+
+
+def descobrir_inputs(nome):
+
+    x = nome
+    nome = input("Qual é o tamanho do(a) " + str(x) + " ")
+
+    while type(nome) != int:
+
+        try:
+            int(nome)
+            break
+        except ValueError:
+            nome = input("Digite um NÚMERO para o(a) " + str(x) + " ")
+
+        if type(nome) == int:
+            break
+
+    return nome
+
+
+
+
+citri = input("Digite o que você tem. Digite 'C' para CONE ou 'T' para triângulo ")
+
+
+
+
+while True:
+
+    if citri.lower() == "c" or citri.lower() == "t":
+        break
+    else:
+        citri = input("Input inválido. Digite o que você tem. Digite 'C' para CONE ou 'T' para triângulo ")
+
+
+
+
+#Geratriz
+if citri.lower() == "c":
+    geratriz = descobrir_inputs("geratriz")
+    raio = descobrir_inputs("raio")
+    print("A área total do cone é " + str(area_cone(int(geratriz), int(raio))) + "pi e a altura é "+ str(re2(int(raio), int(geratriz))))
+
+
+
+
+
+# triangulo
+elif citri.lower() == "t":
+
+    resposta = input("Digite o que você tem. '1' = 2 CATETOS ou '2' = 1 CATETO E HIPOTENUSA ")
+
+    while True:
+
+        if resposta.lower() == "1" or resposta.lower() == "2":
+            break
+        else:
+            resposta = input("INPUT INVÁLIDO. Digite o que você tem. '1' = 2 CATETOS ou '2' = 1 CATETO E HIPOTENUSA ")
+
+
+
+    if resposta == "1":
+        cat1 = descobrir_inputs("cateto 1")
+        cat2 = descobrir_inputs("cateto 2")
+    elif resposta == "2":
+        cat = descobrir_inputs("cateto")
+        hip = descobrir_inputs("hipotenusa")
+
+    if resposta == "1":
+        print("A hipotenusa tem um tamanho de " + str(re1(int(cat1), int(cat2))))
+    else:
+        print("O cateto restante tem um tamanho de " + str(re2(int(cat), int(hip))))
+
+
+
